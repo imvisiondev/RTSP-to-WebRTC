@@ -1,0 +1,31 @@
+
+streams:
+  - name: cam1
+    rtsp: rtsp://....
+    whip_url: "https://...."   # go2rtc
+    meta:
+      device_name: "WebRTC-Camera-1"
+  - name: cam2
+    rtsp: rtsp://....
+    whip_url: "https://...."   # go2rtc
+    meta:
+      device_name: "WebRTC-Camera-2"
+  # Example for MediaMTX instead:
+  # - name: camX
+  #   rtsp: rtsp://...
+  #   whip_url: "https://box2.example.com/whip/camX"
+
+ice_servers:
+  - urls: [""]
+    username: "user"
+    credential: "pass"
+
+# Optional: tweak FFmpeg/aiortc ingest
+ffmpeg_options:
+  rtsp_transport: "tcp"
+  fflags: "nobuffer"
+  flags: "low_delay"
+
+# Retry & watchdog
+retry_initial_backoff_seconds: 2
+retry_max_backoff_seconds: 30
